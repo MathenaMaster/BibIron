@@ -169,10 +169,16 @@ int Attack::AskFor(Ground * ground, int i, int j)
 	}
 	this->target = presents->GetIdx(target - 1);
 	//return this->ApplyDamages();
-	if (owner->GetLife() > 0) {
+	/*if (owner->GetLife() > 0) { // maybe target
 		return this->ApplyAttack(ground, ground->GetX(this->owner), ground->GetY(this->owner));
 	} else {
 		return this->ApplyDamages();
+	}*/
+if (this->target->GetLife() > 0) { // maybe target
+		return this->ApplyAttack(ground, ground->GetX(this->target), ground->GetY(this->target));
+	} else {
+		//return this->ApplyDamages();
+		std::cout << "Target has no more life" << std::endl;
 	}
 }
 
